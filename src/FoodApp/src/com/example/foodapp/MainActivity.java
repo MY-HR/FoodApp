@@ -13,41 +13,43 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener{
 
 	//创建属于 Food 的list
-	private List<Food> foods = new ArrayList<Food>(); 
+	
 	private ViewPager mViewPager;// 用来放置界面切换
 	private PagerAdapter mPagerAdapter;// 初始化View适配器
 	private List<View> mViews = new ArrayList<View>();// 用来存放其他页面
+	private TextView topView;
 	
 	// 获取按键
 	private Button btnHome;
 	private Button btnMenu;
 	private Button btnCheck;
-	View home;
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        //initFoods(); // 添加内容
+        
         initView();
         initViewPage();
         initEvent();
-        
-        // 添加适配器 adapter
-        /*FoodAdapterMain foodAdapterMain = new FoodAdapterMain(home.getContext(),
-        		R.layout.food_item_main, foods);
-        
-        ListView listView = (ListView) findViewById(R.id.listview);
-        listView.setAdapter(foodAdapterMain);*/
     }
     
     private void initEvent() { 	
+    	// 	设置app 启动页面为 home 主页
+    	mViewPager.setCurrentItem(1);
+    	btnHome.setTextSize(22);
+    	topView.setText("主页");
+    	
+    	//	设置底部控件的监听事件
     	btnMenu.setOnClickListener(this);
     	btnHome.setOnClickListener(this);
     	btnCheck.setOnClickListener(this);   	
@@ -60,14 +62,17 @@ public class MainActivity extends Activity implements OnClickListener{
 				case 0:
 					resetBtn();
 					btnMenu.setTextSize(22);
+					topView.setText("菜单分类");
 					break;
 				case 1:
 					resetBtn();
 					btnHome.setTextSize(22);
+					topView.setText("主页");
 					break;
 				case 2:
 					resetBtn();
 					btnCheck.setTextSize(22);
+					topView.setText("账单");
 					break;
 				default:
 					break;
@@ -96,6 +101,8 @@ public class MainActivity extends Activity implements OnClickListener{
 		btnMenu = (Button) findViewById(R.id.menu_button);
 		btnHome = (Button) findViewById(R.id.home_button);
 		btnCheck = (Button) findViewById(R.id.check_button);
+		//获取标题栏的textView
+		topView =  (TextView) findViewById(R.id.top_layout_name);
 	}
     
     /**
@@ -105,7 +112,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		// 初始化三个布局
 		LayoutInflater mLayoutInflater = LayoutInflater.from(this);
 		View menu = mLayoutInflater.inflate(R.layout.menu, null);
-		home = mLayoutInflater.inflate(R.layout.home, null);
+		View home = mLayoutInflater.inflate(R.layout.home_fragment, null);
 		View check= mLayoutInflater.inflate(R.layout.check, null);
 		
 		mViews.add(menu);
@@ -141,21 +148,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		mViewPager.setAdapter(mPagerAdapter);
 	}
 
-    //暂时用 手动方式添加菜色
-    private void initFoods() {
-		Food shengCai = new Food("生菜", R.drawable.ic_launcher);
-		foods.add(shengCai);
-		Food daBaiCai = new Food("大白菜", R.drawable.ic_launcher);
-		foods.add(daBaiCai);
-		Food aa = new Food("大白菜", R.drawable.ic_launcher);
-		foods.add(aa);
-		Food bb = new Food("大白菜", R.drawable.ic_launcher);
-		foods.add(bb);
-		Food cc = new Food("大白菜", R.drawable.ic_launcher);
-		foods.add(cc);
-		Food dd = new Food("大白菜", R.drawable.ic_launcher);
-		foods.add(dd);
-	}
+    
 
 
 	@Override
@@ -172,16 +165,19 @@ public class MainActivity extends Activity implements OnClickListener{
 			mViewPager.setCurrentItem(0);
 			resetBtn();
 			btnMenu.setTextSize(22);
+			topView.setText("菜单分类");
 			break;
 		case R.id.home_button:
 			mViewPager.setCurrentItem(1);
 			resetBtn();
 			btnHome.setTextSize(22);
+			topView.setText("主页");
 			break;
 		case R.id.check_button:
 			mViewPager.setCurrentItem(2);
 			resetBtn();
 			btnCheck.setTextSize(22);
+			topView.setText("账单");
 			break;
 		default :
 				break;
