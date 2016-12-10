@@ -26,7 +26,7 @@ public class FoodAdapterMain extends ArrayAdapter<Food>{
 		View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
 		ImageView foodImage = (ImageView) view.findViewById(R.id.food_image1);
 		TextView foodName = (TextView) view.findViewById(R.id.food_name1);
-		//RatingBar foodBar = (RatingBar) view.findViewById(R.id.ratingbar);
+		//RatingBar foodBar = (RatingBar) view.findViewById(R.id.ratingBar);
 		foodImage.setImageResource(food.getImageId());
 		foodName.setText(food.getName());
 		//foodBar.setRating(food.getBar().getRating());
