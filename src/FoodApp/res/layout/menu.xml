@@ -2,13 +2,136 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     
-    <TextView 
+    <LinearLayout
+        android:id="@+id/menu_item_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="分类页面"
-        />
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_selector">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:gravity="center_vertical|left"
+            android:text="hahaha"
+            android:paddingLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="36sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text=">"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_item_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_selector"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:gravity="center_vertical|left"
+            android:text="hehe"
+            android:paddingLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="36sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text=">"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_item_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_selector"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:gravity="center_vertical|left"
+            android:text="xixixi"
+            android:paddingLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="36sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text=">"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_item_4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_selector"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:gravity="center_vertical|left"
+            android:text="hehe"
+            android:paddingLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="36sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text=">"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_item_5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_selector"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:gravity="center_vertical|left"
+            android:text="hehe"
+            android:paddingLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="36sp"
+            android:gravity="center_vertical|right"
+            android:paddingRight="20dp"
+            android:text=">"/>
+    </LinearLayout>
 
 </LinearLayout>

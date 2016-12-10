@@ -3,12 +3,12 @@ package com.example.foodapp;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,20 +17,19 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements OnClickListener{
+public class MainActivity extends FragmentActivity implements OnClickListener{
 
 	//创建属于 Food 的list
 	
 	private ViewPager mViewPager;// 用来放置界面切换
-	private PagerAdapter mPagerAdapter;// 初始化View适配器
-	private List<View> mViews = new ArrayList<View>();// 用来存放其他页面
+	private FragmentPagerAdapter mPagerAdapter;// 初始化View适配器
+	private List<Fragment> mViews = new ArrayList<Fragment>();// 用来存放其他页面
 	private TextView topView;
 	
 	// 获取按键
 	private Button btnHome;
 	private Button btnMenu;
 	private Button btnCheck;
-	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,44 +51,7 @@ public class MainActivity extends Activity implements OnClickListener{
     	//	设置底部控件的监听事件
     	btnMenu.setOnClickListener(this);
     	btnHome.setOnClickListener(this);
-    	btnCheck.setOnClickListener(this);   	
-    	mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
-			
-			@Override
-			public void onPageSelected(int arg0) {
-				int currentItem = mViewPager.getCurrentItem();
-				switch (currentItem) {
-				case 0:
-					resetBtn();
-					btnMenu.setTextSize(22);
-					topView.setText("菜单分类");
-					break;
-				case 1:
-					resetBtn();
-					btnHome.setTextSize(22);
-					topView.setText("主页");
-					break;
-				case 2:
-					resetBtn();
-					btnCheck.setTextSize(22);
-					topView.setText("账单");
-					break;
-				default:
-					break;
-				}
-			}
-			
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				
-			}
-			
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-				
-			}
-		});
-    	
+    	btnCheck.setOnClickListener(this);
     }
     
     /**
@@ -110,34 +72,18 @@ public class MainActivity extends Activity implements OnClickListener{
 	 */
     private void initViewPage() {
 		// 初始化三个布局
-		LayoutInflater mLayoutInflater = LayoutInflater.from(this);
-		View menu = mLayoutInflater.inflate(R.layout.menu, null);
-		View home = mLayoutInflater.inflate(R.layout.home_fragment, null);
-		View check= mLayoutInflater.inflate(R.layout.check, null);
-		
-		mViews.add(menu);
-		mViews.add(home);
-		mViews.add(check);
+		Fragment mTab1 = new MenuFragment();
+		Fragment mTab2 = new HomeFragment();
+		Fragment mTab3 = new CheckFragment();
 
+		mViews.add(mTab1);
+		mViews.add(mTab2);
+		mViews.add(mTab3);
 		// 适配器初始化并设置
-		mPagerAdapter = new PagerAdapter() {
-
+		mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 			@Override
-			public void destroyItem(ViewGroup container, int position,
-					Object object) {
-				container.removeView(mViews.get(position));
-			}
-
-			@Override
-			public Object instantiateItem(ViewGroup container, int position) {
-				View view = mViews.get(position);
-				container.addView(view);
-				return view;
-			}
-
-			@Override
-			public boolean isViewFromObject(View arg0, Object arg1) {
-				return arg0 == arg1;
+			public Fragment getItem(int i) {
+				return mViews.get(i);
 			}
 
 			@Override
@@ -145,11 +91,9 @@ public class MainActivity extends Activity implements OnClickListener{
 				return mViews.size();
 			}
 		};
+
 		mViewPager.setAdapter(mPagerAdapter);
 	}
-
-    
-
 
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {

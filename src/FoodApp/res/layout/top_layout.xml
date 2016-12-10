@@ -7,7 +7,7 @@
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#777777"
+        android:background="@color/colorBlack"
         >
 
         <TextView
@@ -17,7 +17,7 @@
            	android:layout_centerInParent="true"
            	android:gravity="center"
            	android:textSize="22sp"
-           	android:textColor="#ffffff" />
+           	android:textColor="@color/colorWhite" />
         
     </RelativeLayout>
     
