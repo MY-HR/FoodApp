@@ -1,11 +1,10 @@
 package com.example.foodapp;
 
 
-/* 这个类为  食物 类*/
 public class Food {
 	private String name;
 	private int imageId;
-	private double money;
+	private String money;
 	//private float scores;
 	//private RatingBar bar;
 	
@@ -14,7 +13,7 @@ public class Food {
 		this.imageId = ImageId;
 	}
 	
-	public Food(String name, int ImageId, double money) {
+	public Food(String name, int ImageId, String money) {
 		this.name = name;
 		this.imageId = ImageId;
 		this.money = money;
@@ -28,7 +27,7 @@ public class Food {
 	public int getImageId() {
 		return imageId;
 	}
-	public double getMoney() {
+	public String getMoney() {
 		return money;
 	}
 /*	public RatingBar getBar() {

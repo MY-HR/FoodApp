@@ -17,8 +17,9 @@ import java.util.List;
  */
 
 public class MenuActivity extends FragmentActivity implements View.OnClickListener {
+    private int id;
     private List<Food> foods = new ArrayList<Food>();
-    private FoodAdapterMain adapterMain;
+    private FoodAdapter adapter;
     private ListView listView;
 
     private TextView topTitle, topBackBtn;
@@ -29,15 +30,24 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.menu_activity);
         initView();
-        initFoods();
+        id = getIntent().getIntExtra("Id", 1);
+        switch (id){
+            case 1:
+                initFoods1();
+                break;
+            case 2:
+                initFoods2();
+                break;
+        }
         // 添加适配器 adapter
-        adapterMain = new FoodAdapterMain(this, R.layout.food_item_main, foods);
-        listView.setAdapter(adapterMain);
+        adapter = new FoodAdapter(this, R.layout.food_item, foods);
+        listView.setAdapter(adapter);
         initEvent();
     }
 
-    public static void actionStart(Context context){
+    public static void actionStart(Context context, int Id){
         Intent intent = new Intent(context, MenuActivity.class);
+        intent.putExtra("Id", Id);
         context.startActivity(intent);
     }
 
@@ -54,18 +64,33 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     }
 
     //暂时用 手动方式添加菜色
-    private void initFoods() {
-        Food shengCai = new Food("生菜", R.drawable.ic_launcher);
+    private void initFoods1() {
+        Food shengCai = new Food("生菜", R.drawable.ic_launcher, "￥10");
         foods.add(shengCai);
-        Food daBaiCai = new Food("大白菜", R.drawable.ic_launcher);
+        Food daBaiCai = new Food("大白菜", R.drawable.ic_launcher, "￥10");
         foods.add(daBaiCai);
-        Food aa = new Food("大白菜", R.drawable.ic_launcher);
+        Food aa = new Food("大白菜", R.drawable.ic_launcher, "￥10");
         foods.add(aa);
-        Food bb = new Food("大白菜", R.drawable.ic_launcher);
+        Food bb = new Food("大白菜", R.drawable.ic_launcher, "￥10");
         foods.add(bb);
-        Food cc = new Food("大白菜", R.drawable.ic_launcher);
+        Food cc = new Food("大白菜", R.drawable.ic_launcher, "￥10");
         foods.add(cc);
-        Food dd = new Food("大白菜", R.drawable.ic_launcher);
+        Food dd = new Food("大白菜", R.drawable.ic_launcher, "￥10");
+        foods.add(dd);
+    }
+    //暂时用 手动方式添加菜色
+    private void initFoods2() {
+        Food shengCai = new Food("生菜", R.drawable.ic_launcher, "￥10");
+        foods.add(shengCai);
+        Food daBaiCai = new Food("生菜", R.drawable.ic_launcher, "￥10");
+        foods.add(daBaiCai);
+        Food aa = new Food("生菜", R.drawable.ic_launcher, "￥10");
+        foods.add(aa);
+        Food bb = new Food("生菜", R.drawable.ic_launcher, "￥10");
+        foods.add(bb);
+        Food cc = new Food("生菜", R.drawable.ic_launcher, "￥10");
+        foods.add(cc);
+        Food dd = new Food("生菜", R.drawable.ic_launcher, "￥10");
         foods.add(dd);
     }
 
