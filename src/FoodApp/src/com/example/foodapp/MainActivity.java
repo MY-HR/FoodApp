@@ -19,14 +19,14 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements OnClickListener{
 
-	//´´½¨ÊôÓÚ Food µÄlist
+	//åˆ›å»ºå±äº Food çš„list
 	
-	private ViewPager mViewPager;// ÓÃÀ´·ÅÖÃ½çÃæÇĞ»»
-	private FragmentPagerAdapter mPagerAdapter;// ³õÊ¼»¯ViewÊÊÅäÆ÷
-	private List<Fragment> mViews = new ArrayList<Fragment>();// ÓÃÀ´´æ·ÅÆäËûÒ³Ãæ
+	private ViewPager mViewPager;// ç”¨æ¥æ”¾ç½®ç•Œé¢åˆ‡æ¢
+	private FragmentPagerAdapter mPagerAdapter;// åˆå§‹åŒ–Viewé€‚é…å™¨
+	private List<Fragment> mViews = new ArrayList<Fragment>();// ç”¨æ¥å­˜æ”¾å…¶ä»–é¡µé¢
 	private TextView topView;
 	
-	// »ñÈ¡°´¼ü
+	// è·å–æŒ‰é”®
 	private Button btnHome;
 	private Button btnMenu;
 	private Button btnCheck;
@@ -43,35 +43,35 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
     }
     
     private void initEvent() { 	
-    	// 	ÉèÖÃapp Æô¶¯Ò³ÃæÎª home Ö÷Ò³
+    	// 	è®¾ç½®app å¯åŠ¨é¡µé¢ä¸º home ä¸»é¡µ
     	mViewPager.setCurrentItem(1);
     	btnHome.setTextSize(22);
-    	topView.setText("Ö÷Ò³");
+    	topView.setText("ä¸»é¡µ");
     	
-    	//	ÉèÖÃµ×²¿¿Ø¼şµÄ¼àÌıÊÂ¼ş
+    	//	è®¾ç½®åº•éƒ¨æ§ä»¶çš„ç›‘å¬äº‹ä»¶
     	btnMenu.setOnClickListener(this);
     	btnHome.setOnClickListener(this);
     	btnCheck.setOnClickListener(this);
     }
     
     /**
-	 * ³õÊ¼»¯ÉèÖÃ
+	 * åˆå§‹åŒ–è®¾ç½®
 	 */
     private void initView() {
 		mViewPager = (ViewPager) findViewById(R.id.main_viewpager);
-		// ³õÊ¼»¯ËÄ¸ö°´Å¥
+		// åˆå§‹åŒ–å››ä¸ªæŒ‰é’®
 		btnMenu = (Button) findViewById(R.id.menu_button);
 		btnHome = (Button) findViewById(R.id.home_button);
 		btnCheck = (Button) findViewById(R.id.check_button);
-		//»ñÈ¡±êÌâÀ¸µÄtextView
+		//è·å–æ ‡é¢˜æ çš„textView
 		topView =  (TextView) findViewById(R.id.top_layout_name);
 	}
     
     /**
-	 * ³õÊ¼»¯ViewPage
+	 * åˆå§‹åŒ–ViewPage
 	 */
     private void initViewPage() {
-		// ³õÊ¼»¯Èı¸ö²¼¾Ö
+		// åˆå§‹åŒ–ä¸‰ä¸ªå¸ƒå±€
 		Fragment mTab1 = new MenuFragment();
 		Fragment mTab2 = new HomeFragment();
 		Fragment mTab3 = new CheckFragment();
@@ -79,7 +79,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 		mViews.add(mTab1);
 		mViews.add(mTab2);
 		mViews.add(mTab3);
-		// ÊÊÅäÆ÷³õÊ¼»¯²¢ÉèÖÃ
+		// é€‚é…å™¨åˆå§‹åŒ–å¹¶è®¾ç½®
 		mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 			@Override
 			public Fragment getItem(int i) {
@@ -109,19 +109,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 			mViewPager.setCurrentItem(0);
 			resetBtn();
 			btnMenu.setTextSize(22);
-			topView.setText("²Ëµ¥·ÖÀà");
+			topView.setText("èœå•");
 			break;
 		case R.id.home_button:
 			mViewPager.setCurrentItem(1);
 			resetBtn();
 			btnHome.setTextSize(22);
-			topView.setText("Ö÷Ò³");
+			topView.setText("ä¸»é¡µ");
 			break;
 		case R.id.check_button:
 			mViewPager.setCurrentItem(2);
 			resetBtn();
 			btnCheck.setTextSize(22);
-			topView.setText("ÕËµ¥");
+			topView.setText("è´¦å•");
 			break;
 		default :
 				break;
@@ -129,7 +129,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 	}
 	
 	/**
-	 * °ÑËùÓĞ°´¼üÖØÉè
+	 * æŠŠæ‰€æœ‰æŒ‰é”®é‡è®¾
 	 */
 	private void resetBtn() {
 		btnCheck.setTextSize(18);

@@ -23,15 +23,28 @@ public class FoodAdapterMain extends ArrayAdapter<Food>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Food food = getItem(position);
-		View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-		ImageView foodImage = (ImageView) view.findViewById(R.id.food_image1);
-		TextView foodName = (TextView) view.findViewById(R.id.food_name1);
-		//RatingBar foodBar = (RatingBar) view.findViewById(R.id.ratingBar);
-		foodImage.setImageResource(food.getImageId());
-		foodName.setText(food.getName());
+		View view;
+		ViewHolder viewHolder;
+		if(convertView == null){
+			view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+			viewHolder = new ViewHolder();
+			viewHolder.foodImage = (ImageView) view.findViewById(R.id.food_image1);
+			viewHolder.foodName = (TextView) view.findViewById(R.id.food_name1);
+			//RatingBar foodBar = (RatingBar) view.findViewById(R.id.ratingBar);
+			view.setTag(viewHolder);
+		}else {
+			view = convertView;
+			viewHolder = (ViewHolder) view.getTag();
+		}
+		viewHolder.foodImage.setImageResource(food.getImageId());
+		viewHolder.foodName.setText(food.getName());
 		//foodBar.setRating(food.getBar().getRating());
-		
 		return view;
+	}
+
+	class ViewHolder{
+		ImageView foodImage;
+		TextView foodName;
 	}
 
 }

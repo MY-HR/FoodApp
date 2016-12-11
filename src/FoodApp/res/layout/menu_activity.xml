@@ -3,10 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"/>
+
     <ListView
         android:id="@+id/menu_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
     </ListView>
 
 </LinearLayout>
