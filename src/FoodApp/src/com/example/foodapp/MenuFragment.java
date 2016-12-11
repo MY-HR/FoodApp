@@ -59,6 +59,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.menu_item_1:
                 MenuActivity.actionStart(activity);
+                activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                 break;
         }
     }

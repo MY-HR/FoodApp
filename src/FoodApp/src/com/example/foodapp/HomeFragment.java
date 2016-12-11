@@ -19,25 +19,23 @@ import android.widget.ListView;
 
 public class HomeFragment extends Fragment{
 	private Activity activity;
-	// ÉùÃ÷¿Ø¼ş£¬viewPager ¶¨Òå
+	//åˆå§‹åŒ–viewpager
 	private ViewPager mViewPager;
 	private List<ImageView> mlist;
 	private LinearLayout mLinearLayout;
 
-	// ¹ã¸æÍ¼ËØ²Ä
+	// å­˜å‚¨å›¾ç‰‡
 	private int[] bannerImages = { R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4 };
-	// ¹ã¸æÓï
 
-	// ViewPagerÊÊÅäÆ÷Óë¼àÌıÆ÷
+	// ViewPager	å¹¿å‘Š
 	private BannerAdapter mAdapter;
 	private BannerListener bannerListener;
 
-	// Ô²È¦±êÖ¾Î»
+	// è®¾ç½®ç‚¹
 	private int pointIndex = 0;
-	// Ïß³Ì±êÖ¾
 	private boolean isStop = false;
 
-	/*	ListView ¶¨Òå  */
+	/*	ListView   */
 	private View view;
 	private List<Food> foods = new ArrayList<Food>(); 
 	private FoodAdapterMain adapterMain;
@@ -58,11 +56,11 @@ public class HomeFragment extends Fragment{
 		initData();
 		initAction();
 		initFoods();
-		// Ìí¼ÓÊÊÅäÆ÷ adapter
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ adapter
 		adapterMain = new FoodAdapterMain(activity, R.layout.food_item_main, foods);
         listView.setAdapter(adapterMain);
 
-		// ¿ªÆôĞÂÏß³Ì£¬2ÃëÒ»´Î¸üĞÂBanner
+		// è®¾ç½®å¹¿å‘Š4ç§’è‡ªåŠ¨è¿‡
 		new Thread(new Runnable() {
 
 			@Override
@@ -82,49 +80,44 @@ public class HomeFragment extends Fragment{
 		return view;
 	}
 	
-	//ÔİÊ±ÓÃ ÊÖ¶¯·½Ê½Ìí¼Ó²ËÉ«
+	//æ‰‹åŠ¨ç»™æ•°æ®ï¼Œæš‚æ—¶ç”¨ç€
     private void initFoods() {
-		Food shengCai = new Food("Éú²Ë", R.drawable.ic_launcher);
+		Food shengCai = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(shengCai);
-		Food daBaiCai = new Food("´ó°×²Ë", R.drawable.ic_launcher);
+		Food daBaiCai = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(daBaiCai);
-		Food aa = new Food("´ó°×²Ë", R.drawable.ic_launcher);
+		Food aa = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(aa);
-		Food bb = new Food("´ó°×²Ë", R.drawable.ic_launcher);
+		Food bb = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(bb);
-		Food cc = new Food("´ó°×²Ë", R.drawable.ic_launcher);
+		Food cc = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(cc);
-		Food dd = new Food("´ó°×²Ë", R.drawable.ic_launcher);
+		Food dd = new Food("å¤§ç™½èœ", R.drawable.ic_launcher);
 		foods.add(dd);
 	}
 
-	/**
-	 * ³õÊ¼»¯ÊÂ¼ş
-	 */
 	private void initAction() {
 		bannerListener = new BannerListener();
 		mViewPager.setOnPageChangeListener(bannerListener);
-		//È¡ÖĞ¼äÊıÀ´×÷ÎªÆğÊ¼Î»ÖÃ
+
 		int index = (Integer.MAX_VALUE / 2) - (Integer.MAX_VALUE / 2 % mlist.size());
-		//ÓÃÀ´³ö·¢¼àÌıÆ÷
+
 		mViewPager.setCurrentItem(index);
 		mLinearLayout.getChildAt(pointIndex).setEnabled(true);
 	}
 
-	/**
-	 * ³õÊ¼»¯Êı¾İ
-	 */
+
 	private void initData() {
 		mlist = new ArrayList<ImageView>();
 		View view;
 		LayoutParams params;
 		for (int i = 0; i < bannerImages.length; i++) {
-			// ÉèÖÃ¹ã¸æÍ¼
+
 			ImageView imageView = new ImageView(activity);
 			imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 			imageView.setBackgroundResource(bannerImages[i]);
 			mlist.add(imageView);
-			// ÉèÖÃÔ²È¦µã
+
 			view = new View(activity);
 			params = new LayoutParams(5, 5);
 			params.leftMargin = 10;
@@ -139,7 +132,7 @@ public class HomeFragment extends Fragment{
 	}
 
 	/**
-	 * ³õÊ¼»¯View²Ù×÷
+	 *
 	 */
 	private void initView() {
 		mViewPager = (ViewPager) view.findViewById(R.id.ad_viewpager);
@@ -147,7 +140,6 @@ public class HomeFragment extends Fragment{
 		listView = (ListView) view.findViewById(R.id.listview);
 	}
 
-	//ÊµÏÖVierPager¼àÌıÆ÷½Ó¿Ú
 	class BannerListener implements ViewPager.OnPageChangeListener {
 
 		@Override
@@ -163,7 +155,7 @@ public class HomeFragment extends Fragment{
 			int newPosition = position % bannerImages.length;
 			mLinearLayout.getChildAt(newPosition).setEnabled(true);
 			mLinearLayout.getChildAt(pointIndex).setEnabled(false);
-			// ¸üĞÂ±êÖ¾Î»
+
 			pointIndex = newPosition;
 
 		}
@@ -172,14 +164,13 @@ public class HomeFragment extends Fragment{
 
 	@Override
 	public void onDestroy() {
-		// ¹Ø±Õ¶¨Ê±Æ÷
+
 		isStop = true;
 		super.onDestroy();
 	}
 
 	public class BannerAdapter extends PagerAdapter {
 
-		//Êı¾İÔ´
 		private List<ImageView> mList;
 
 		public BannerAdapter(List<ImageView> list) {
@@ -188,7 +179,6 @@ public class HomeFragment extends Fragment{
 
 		@Override
 		public int getCount() {
-			//È¡³¬´óµÄÊı£¬ÊµÏÖÎŞÏßÑ­»·Ğ§¹û
 			return Integer.MAX_VALUE;
 		}
 
